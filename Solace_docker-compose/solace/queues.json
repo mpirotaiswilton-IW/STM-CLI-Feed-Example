@@ -1,0 +1,118 @@
+{
+    "hostname": "solace",
+    "port": "8080",
+    
+    "username": "admin",
+    "password" : "admin",
+
+    "queues": [
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "ANZ",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics" :
+            [
+                {
+                    "name": "root/payment/v1/01"
+                }
+            ]
+        },
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "BNZ",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics" :
+            [
+                {
+                    "name": "root/payment/v1/02"
+                }
+            ]
+        },
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "ASB",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics" :
+            [
+                {
+                    "name": "root/payment/v1/12"
+                }
+            ]
+        },
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "KiwiBank",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics" :
+            [
+                {
+                    "name": "root/payment/v1/38"
+                }
+            ]
+        },
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "Fraud",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics":
+            [
+                {
+                    "name": "root/fraud/v1/*"
+                }
+            ]
+        },
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "AI",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics" :
+            [
+                {
+                    "name": "root/ai/v1/*"
+                }
+            ]
+        }
+    ]
+}

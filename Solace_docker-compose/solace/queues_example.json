@@ -1,0 +1,28 @@
+{
+    "hostname": "solace",
+    "port": "8080",
+
+    "username": "admin",
+    "password" : "admin",
+
+    "queues": [
+        {
+            "msg_vpn_name":             "default",
+            "attributes":
+            {
+                "queueName":            "TestQueue",
+                "accessType":           "exclusive",
+                "maxMsgSpoolUsage":      5000,
+                "permission":           "consume",
+                "ingressEnabled":        true,
+                "egressEnabled":         true
+            },
+            "subscribed_topics" :
+            [
+                {
+                    "name": "test/topic"
+                }
+            ]
+        }
+    ]
+}
