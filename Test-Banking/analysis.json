@@ -367,12 +367,12 @@
   },
   "servers": {},
   "info": {
-    "x-ep-application-version": "0.0.0",
-    "description": "Testing Banking",
-    "x-ep-displayname": "0.0.0",
+    "x-ep-application-version": "0.1.0",
+    "description": "Test Banking",
+    "x-ep-displayname": "0.1.0",
     "x-ep-state-name": "DRAFT",
     "title": "Test Banking",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "x-ep-state-id": "1",
     "x-ep-application-domain-name": "Test Bank"
   },

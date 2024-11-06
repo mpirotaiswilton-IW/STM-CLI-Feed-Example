@@ -1,11 +1,11 @@
 {
   "type": "asyncapi_feed",
-  "name": "Test Banking",
-  "description": "Feed used to mock messages to go to a Test of a Solace Payments Solution",
+  "name": "Test-Banking",
+  "description": "A testing feed to mock message delivery for a testing payments solution using Solace",
   "img": "",
   "contributor": "Max Pirotais-Wilton",
   "github": "max-pw-fusion5",
   "domain": "fusion5.co.nz",
-  "tags": "Test, Payments, Banking",
-  "lastUpdated": "2024-11-06T03:11:19.053Z"
+  "tags": "Test, payments, banking",
+  "lastUpdated": "2024-11-06T19:31:26.879Z"
 }
