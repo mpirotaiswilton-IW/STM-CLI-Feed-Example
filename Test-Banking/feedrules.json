@@ -1,0 +1,269 @@
+[
+  {
+    "topic": "root/payment/v1/{bankPrefix}",
+    "eventName": "Payment",
+    "eventVersion": "0.0.0",
+    "messageName": "Payment",
+    "topicParameters": {
+      "bankPrefix": {
+        "description": "the first 2 digits representing the bank",
+        "type": "string",
+        "rule": {
+          "name": "bankPrefix",
+          "type": "string",
+          "group": "StringRules",
+          "rule": "enum",
+          "enum": [
+            "01",
+            "02",
+            "12",
+            "38"
+          ]
+        }
+      }
+    },
+    "payload": {
+      "transactionType": {
+        "description": "The transaction type.",
+        "type": "string",
+        "rule": {
+          "name": "transactionType",
+          "type": "string",
+          "group": "StringRules",
+          "rule": "enum",
+          "enum": [
+            "payment"
+          ]
+        }
+      },
+      "amount": {
+        "description": "The transaction amount.",
+        "type": "number",
+        "rule": {
+          "name": "amount",
+          "type": "number",
+          "group": "NumberRules",
+          "rule": "float",
+          "minimum": 0,
+          "maximum": 10000,
+          "fractionDigits": 2
+        }
+      },
+      "transactionNum": {
+        "description": "The unique identifier of the transaction.",
+        "type": "integer",
+        "rule": {
+          "name": "transactionNum",
+          "type": "integer",
+          "group": "StringRules",
+          "rule": "numeric",
+          "minLength": 5,
+          "maxLength": 5,
+          "leadingZeros": true
+        }
+      },
+      "accountNum": {
+        "description": "The unique identifer of an account.",
+        "type": "integer",
+        "rule": {
+          "name": "accountNum",
+          "type": "integer",
+          "group": "FinanceRules",
+          "rule": "accountNumber"
+        }
+      },
+      "currency": {
+        "description": "The currency of the transaction.",
+        "type": "string",
+        "rule": {
+          "name": "currency",
+          "type": "string",
+          "group": "StringRules",
+          "rule": "enum",
+          "enum": [
+            "NZD"
+          ]
+        }
+      },
+      "timestamp": {
+        "description": "The time stamp of the event.",
+        "type": "string",
+        "rule": {
+          "name": "timestamp",
+          "type": "string",
+          "group": "DateRules",
+          "rule": "recent",
+          "days": 1
+        }
+      }
+    },
+    "publishSettings": {
+      "count": 100,
+      "interval": 250,
+      "delay": 0
+    }
+  },
+  {
+    "topic": "root/fraud/v1/{type}",
+    "eventName": "Summary",
+    "eventVersion": "0.0.0",
+    "messageName": "Fraud_Summary",
+    "topicParameters": {
+      "type": {
+        "schema": {
+          "type": "string"
+        },
+        "rule": {
+          "name": "type",
+          "type": "string",
+          "group": "StringRules",
+          "rule": "alpha",
+          "casing": "mixed",
+          "minLength": 10,
+          "maxLength": 10
+        }
+      }
+    },
+    "payload": {
+      "type":{
+        "description": "The type of the summary.",
+        "type": "string",
+        "rule": {
+          "name": "type",
+          "type": "string",
+          "group": "StringRules",
+          "rule": "enum",
+          "enum": [
+            "TypeA",
+            "TypeB",
+            "TypeC"
+          ]
+        }
+      },
+      "name": {
+        "description": "The name of the summary.",
+        "type": "string",
+        "rule": {
+          "description": "The name of the summary.",
+          "type": "string",
+          "name": "name",
+          "group": "LoremRules",
+          "rule": "word",
+          "minimum": 5,
+          "maximum": 10
+        }
+      },
+      "content": {
+        "description": "The content of the summary.",
+        "type": "string",
+        "rule": {
+          "description": "The content of the summary.",
+          "type": "string",
+          "name": "content",
+          "group": "LoremRules",
+          "rule": "paragraph",
+          "minimum": 2,
+          "maximum": 5
+        }
+      },
+      "timestamp": {
+        "description": "The time stamp of the event.",
+        "type": "string",
+        "rule": {
+          "name": "timestamp",
+          "type": "string",
+          "group": "DateRules",
+          "rule": "recent",
+          "days": 1
+        }
+      }
+    },
+    "publishSettings": {
+      "count": 10,
+      "interval": 1,
+      "delay": 0
+    },    
+    "mappings": [
+      {
+        "type": "Topic Parameter",
+        "source": {
+          "type": "Payload Parameter",
+          "name": "type",
+          "fieldName": "type",
+          "fieldType": "string"
+        },
+        "target": {
+          "type": "Topic Parameter",
+          "name": "type",
+          "fieldName": "type",
+          "fieldType": "string"
+        }
+      }
+    ]
+  },
+  {
+    "topic": "root/ai/v1/{type}",
+    "eventName": "Summary",
+    "eventVersion": "0.0.0",
+    "messageName": "AI_Summary",
+    "topicParameters": {
+      "type":{
+        "description": "The type of the summary.",
+        "type": "string",
+        "rule": {
+          "name": "type",
+          "type": "string",
+          "group": "StringRules",
+          "rule": "enum",
+          "enum": [
+            "None"
+          ]
+        }
+      }
+    },
+    "payload": {
+      "name": {
+        "description": "The name of the summary.",
+        "type": "string",
+        "rule": {
+          "description": "The name of the summary.",
+          "type": "string",
+          "name": "name",
+          "group": "LoremRules",
+          "rule": "word",
+          "minimum": 5,
+          "maximum": 10
+        }
+      },
+      "content": {
+        "description": "The content of the summary.",
+        "type": "string",
+        "rule": {
+          "description": "The content of the summary.",
+          "type": "string",
+          "name": "content",
+          "group": "LoremRules",
+          "rule": "paragraph",
+          "minimum": 2,
+          "maximum": 5
+        }
+      },
+      "timestamp": {
+        "description": "The time stamp of the event.",
+        "type": "string",
+        "rule": {
+          "name": "timestamp",
+          "type": "string",
+          "group": "DateRules",
+          "rule": "recent",
+          "days": 1
+        }
+      }
+    },
+    "publishSettings": {
+      "count": 10,
+      "interval": 1,
+      "delay": 0
+    }
+  }
+]
