@@ -30,7 +30,7 @@
 
     This will take some time to complete, allow for 30 seconds to a full minute.
 
-4. the following 2 containers should now be running and/or have finnished running:
+4. The following 2 containers should now be running and/or have finnished running:
     - `solace`: The Solace PubSub+ message broker
     - `solace-init`: where a python script runs to set up our solace container for the testing payment solution. This container will exit after it has completed its intended purpose
 
@@ -43,6 +43,35 @@ Once deployed, the Solace broker should be accessible through it's web console a
 2. Once logged in, the `default` Message VPN card should show there are 6 queues and topic endpoints. Click on the `default` Message VPN Card
 
 3. Using the left column, navigate to `Queues`: You should see 6 Queues.
+
+## Deploying STM CLI Docker Container
+
+1. Using a Command Line Interface of your choosing, change directory to the downloaded/cloned repository
+
+2. Change directory to `stm_docker-compose` using the following command:
+
+    ```
+    cd stm_docker-compose
+    ```
+
+3. Run the following command: 
+
+    ```
+    docker-compose up --build -d
+    ```
+
+4. The following container should now be running:
+
+    - `stm-feed`: The Solace PubSub+ message broker
+
+5. To use the container to perform stm commands, run the following command to access the container's shell:
+    ```
+    docker exec -it stm-feed sh
+    ```
+    To verify that stm is functional, get the installed version of stm with the following command:
+    ```
+    stm -v
+    ```
 
 ## **Using Solace Try-Me CLI for mocking**
 
@@ -94,12 +123,22 @@ While you have generated a new feed to be used with stm cli, it will not work as
         "delay": 0
     }
     ```
-    This will mean that if you attempt to run the newly generated feed, not only will it not send any events to your Solace Broker, it will take a 1000 seconds (16 minutes and 40 seconds) before stm completes the command without sending any events. 
+    This will mean that if you attempt to run the newly generated feed, it will not send any messages at all. One quirk to note: the interval value is interpreted as milliseconds when running dockerized, but as seconds when running it with WSL on a Windows machine. This means running this with WSL as is, it will take a 1000 seconds (16 minutes and 40 seconds) before stm completes the command without sending any events. 
     
     <ins>**These need to be changed**</ins> for the new feed to be useful. 
 
     Here is an example of a `publishSettings` value that sends 10 events every second: 
     ```json
+    <!-- When running in Docker Container-->
+
+    "publishSettings": {
+        "count": 10,
+        "interval": 1000,
+        "delay": 0
+    }
+
+    <!-- When running in WSL-->
+
     "publishSettings": {
         "count": 10,
         "interval": 1,
@@ -167,6 +206,9 @@ While you have generated a new feed to be used with stm cli, it will not work as
 
 ## Running a feed using STM CLI
 
+
+### <ins>Set Up to run Locally</ins>
+
 To make sure stm will send messages to the broker you just deployed:
 
 * Change stm connection settings by running the following command (replace username and password with the credentials used to login to the broker's web console):
@@ -180,6 +222,7 @@ To make sure you can run the provided feed:
 
 2. Copy the `Test-Banking` folder in your cloned repository into the `.stm/feeds` directory.
 
+### <ins>Run Feed</ins>
 
 To run the provided feed (or any feed you have locally on your machine):
 
