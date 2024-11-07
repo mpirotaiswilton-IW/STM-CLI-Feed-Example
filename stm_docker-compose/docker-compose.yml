@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  stm: 
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: stm-feed
+    restart: "no"
+    networks:
+      - solace_docker-compose_common-network
+
+networks:
+  solace_docker-compose_common-network:
+    external: true
+    
