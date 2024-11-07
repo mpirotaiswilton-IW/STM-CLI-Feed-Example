@@ -99,7 +99,7 @@
     },
     "publishSettings": {
       "count": 100,
-      "interval": 0.25,
+      "interval": 250,
       "delay": 0
     }
   },
@@ -180,7 +180,7 @@
     },
     "publishSettings": {
       "count": 10,
-      "interval": 1,
+      "interval": 1000,
       "delay": 0
     },    
     "mappings": [
@@ -262,7 +262,7 @@
     },
     "publishSettings": {
       "count": 10,
-      "interval": 1,
+      "interval": 1000,
       "delay": 0
     }
   }
