@@ -7,10 +7,10 @@
 1. If not already installed:
 
 - Install Docker on your device (you can use the following link for a guide: <https://docs.docker.com/get-docker/>)
-- Install Solace Try-Me CLI (stm)
-- Install WSL 2 if looking to use stm cli with a Windows System 
+- Install Solace Try-Me CLI (stm) (You can find an installation guide here: <https://docs.solace.com/Get-Started/tutorial/try-me-cli-tool.htm>)
+- Install WSL 2 if looking to use stm cli with a Windows System (You can find an instalation guide here: <https://learn.microsoft.com/en-us/windows/wsl/install>)
 
-2. Clone this repository or download the .zip file from GitHub (extract the downloaded zip file )
+2. Clone this repository or download the .zip file from GitHub (extract the downloaded zip file)
 
 ## Dockerized Deployment
 
