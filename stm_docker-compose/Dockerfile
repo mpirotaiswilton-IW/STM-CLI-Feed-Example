@@ -9,7 +9,7 @@ RUN apt-get install stm
 RUN stm config init
 
 ADD Test-Banking root/.stm/feeds/Test-Banking
-COPY test-banking-0.1.0.json tmp/test-banking-0.1.0.json
+COPY test-banking-0.1.0.json root/asyncapi/test-banking-0.1.0.json
 COPY stm-cli-config.json root/.stm/stm-cli-config.json
 
 CMD ["tail", "-f"]
